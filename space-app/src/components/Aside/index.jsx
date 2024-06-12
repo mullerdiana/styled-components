@@ -7,6 +7,7 @@ export const Aside = () => {
         <NavItem
           activeIcon="/icons/home-ativo.png"
           inactiveIcon="/icons/home-inativo.png"
+          isActive = {true}
         >
         o  Início
         </NavItem>
