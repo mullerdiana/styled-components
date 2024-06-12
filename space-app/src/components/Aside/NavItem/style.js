@@ -6,7 +6,7 @@ export const itemList = styled.li`
     line-height: 29px;
     margin-bottom: 30px;
     cursor: pointer;
-    color: ${(props) => (props.$isActive ? "#7B78E5" : "#D9D9D9")};
+    color: ${isActive ? "#7B78E5" : "#D9D9D9"};
     font-family: ${isActive ? "GandhiSansBold" : "GandhiSansRegular"};
     display: flex;
     align-items: center;
