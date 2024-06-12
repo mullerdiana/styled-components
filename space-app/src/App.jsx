@@ -1,7 +1,9 @@
 import styled from "styled-components";
-import {GlobalStyles} from './components/GlobalStyles'
+import { GlobalStyles } from "./components/GlobalStyles";
+import { Header } from "./components/Header";
+import { Aside } from "./components/Aside";
 
-const FundoGradiente = styled.div`
+const BackgroundGradient = styled.div`
   background: linear-gradient(
     174.61deg,
     #041833 4.16%,
@@ -13,9 +15,13 @@ const FundoGradiente = styled.div`
 `;
 
 function App() {
-  return <FundoGradiente>
-    <GlobalStyles />
-  </FundoGradiente>;
+  return (
+    <BackgroundGradient>
+      <GlobalStyles />
+      <Header />
+      <Aside />
+    </BackgroundGradient>
+  );
 }
 
 export default App;
