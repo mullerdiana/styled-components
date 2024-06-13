@@ -10,5 +10,18 @@ export const Overlay = styled.div`
 `;
 export const Dialog = styled.dialog`
   position: absolute;
-  top: 294px;
+  top: 104px;
+  background: transparent;
+    padding: 0;
+    border: 0;
+    width: 856px;
+    display: flex;
+    justify-content: center;
+    form {
+        button {
+            position: relative;
+            top: 20px;
+            right: 60px;
+        }
+    }
 `;

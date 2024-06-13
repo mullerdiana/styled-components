@@ -39,7 +39,7 @@ const GalleryContent = styled.section`
 `;
 
 const App = () => {
-  const [galleryPhoto, setGalleryPhoto] = useState(photos);
+  const [galleryPhotos, setGalleryPhotos] = useState(photos);
   const [photoSelected, setPhotoSelected] = useState(null);
   return (
     <BackgroundGradient>
@@ -55,12 +55,12 @@ const App = () => {
             />
             <Gallery
               onPhotoSelected={(photo) => setPhotoSelected(photo)}
-              photos={galleryPhoto}
+              photos={galleryPhotos}
             />
           </GalleryContent>
         </MainContainer>
       </AppContainer>
-      <ModalZoom photo={photoSelected} />
+      <ModalZoom photo={photoSelected} OnClose={() => setPhotoSelected(null)} />
     </BackgroundGradient>
   );
 };

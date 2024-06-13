@@ -1,4 +1,3 @@
-import { useState } from "react";
 import * as S from "./style.js";
 import { ButtonIcon } from "../../ButtonIcon/index.jsx";
 
