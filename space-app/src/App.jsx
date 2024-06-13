@@ -41,6 +41,11 @@ const GalleryContent = styled.section`
 const App = () => {
   const [galleryPhotos, setGalleryPhotos] = useState(photos);
   const [photoSelected, setPhotoSelected] = useState(null);
+
+  const toggleFavorite = (photo) => {
+    console.log(photo);
+  };
+
   return (
     <BackgroundGradient>
       <GlobalStyles />
@@ -55,6 +60,7 @@ const App = () => {
             />
             <Gallery
               onPhotoSelected={(photo) => setPhotoSelected(photo)}
+              toggleFavorite={toggleFavorite}
               photos={galleryPhotos}
             />
           </GalleryContent>

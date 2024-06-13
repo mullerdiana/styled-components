@@ -4,7 +4,7 @@ import { Populars } from "./Populars/index.jsx";
 import { PhotoImage } from "./PhotoImage/index.jsx";
 import * as S from "./style.js";
 
-export const Gallery = ({ photos = [], onPhotoSelected }) => {
+export const Gallery = ({ photos = [], onPhotoSelected, toggleFavorite }) => {
   return (
     <>
       <Tags />
@@ -15,6 +15,7 @@ export const Gallery = ({ photos = [], onPhotoSelected }) => {
             {photos.map((photo) => (
               <PhotoImage
                 onZoomRequest={onPhotoSelected}
+                toggleFavorite={toggleFavorite}
                 key={photo.id}
                 photo={photo}
               />
