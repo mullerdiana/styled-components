@@ -5,8 +5,11 @@ export const PhotoImage = ({
   photo,
   isExtended = false,
   onZoomRequest,
-  toggleFavorite
+  toggleFavorite,
 }) => {
+  const iconFavorite = photo.favorite
+    ? "/icons/favorito-ativo.png"
+    : "/icons/favorito.png";
   return (
     <S.Figure isExtended={isExtended}>
       <img src={photo.path} alt={photo.alt} />
@@ -15,7 +18,7 @@ export const PhotoImage = ({
         <S.Footer>
           <h4>{photo.fonte}</h4>
           <ButtonIcon onClick={() => toggleFavorite(photo)}>
-            <img src="/icons/favorito.png" alt="Icone de favorito" />
+            <img src={iconFavorite} alt="Icone de favorito" />
           </ButtonIcon>
           {!isExtended && (
             <ButtonIcon
