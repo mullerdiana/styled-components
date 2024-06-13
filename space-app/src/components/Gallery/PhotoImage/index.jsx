@@ -2,7 +2,7 @@ import { useState } from "react";
 import * as S from "./style.js";
 import { ButtonIcon } from "../../ButtonIcon/index.jsx";
 
-export const PhotoImage = ({ photo, isExtended = false }) => {
+export const PhotoImage = ({ photo, isExtended = false, onZoomRequest }) => {
 
 
   return (
@@ -16,7 +16,7 @@ export const PhotoImage = ({ photo, isExtended = false }) => {
             <img src="/icons/favorito.png" alt="Icone de favorito" />
           </ButtonIcon>
           {!isExtended && (
-            <ButtonIcon aria-hidden={isExtended}>
+            <ButtonIcon aria-hidden={isExtended} onClick={()=> onZoomRequest(photo)}>
               <img src="/icons/expandir.png" alt="Icone de expandir" />
             </ButtonIcon>
           )}
