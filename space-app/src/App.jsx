@@ -43,6 +43,12 @@ const App = () => {
   const [photoSelected, setPhotoSelected] = useState(null);
 
   const toggleFavorite = (photo) => {
+    if (photo.id === photoSelected?.id) {
+      setPhotoSelected({
+        ...photoSelected,
+        favorite: !photoSelected.favorite
+      })
+    }
     setGalleryPhotos(
       galleryPhotos.map((galleryPhoto) => {
         return {
@@ -74,7 +80,11 @@ const App = () => {
           </GalleryContent>
         </MainContainer>
       </AppContainer>
-      <ModalZoom photo={photoSelected} OnClose={() => setPhotoSelected(null)} />
+      <ModalZoom 
+      photo={photoSelected} 
+      OnClose={() => setPhotoSelected(null)}
+      toggleFavorite={toggleFavorite}
+      />
     </BackgroundGradient>
   );
 };
