@@ -7,7 +7,6 @@ export const Figure = styled.figure`
     background-repeat: no-repeat;
     display: flex;
     align-items: center;
-    justify-content: center;
     min-height: 328px;
     margin: 0;
     border-radius: 20px;

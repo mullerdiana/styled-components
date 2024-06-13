@@ -4,6 +4,10 @@ import { Header } from "./components/Header";
 import { Aside } from "./components/Aside";
 import { Banner } from "./components/Banner";
 import bannerBackground from "./assets/banner.png";
+import { Gallery } from "./components/Gallery";
+
+import photos from "./fotos.json";
+import { useState } from "react";
 
 const BackgroundGradient = styled.div`
   background: linear-gradient(
@@ -27,7 +31,14 @@ const MainContainer = styled.main`
   gap: 24px;
 `;
 
-function App() {
+const GalleryContent = styled.section`
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+`;
+
+const App = () => {
+  const [galleryPhoto, setGalleryPhoto] = useState(photos);
   return (
     <BackgroundGradient>
       <GlobalStyles />
@@ -35,14 +46,17 @@ function App() {
         <Header />
         <MainContainer>
           <Aside />
-          <Banner
-            backgroundImage={bannerBackground}
-            text={"A galeria mais completa de fotos do espaço!"}
-          />
+          <GalleryContent>
+            <Banner
+              backgroundImage={bannerBackground}
+              text={"A galeria mais completa de fotos do espaço!"}
+            />
+            <Gallery photos={galleryPhoto}/>
+          </GalleryContent>
         </MainContainer>
       </AppContainer>
     </BackgroundGradient>
   );
-}
+};
 
 export default App;
