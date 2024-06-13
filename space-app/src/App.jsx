@@ -7,8 +7,9 @@ import bannerBackground from "./assets/banner.png";
 import { Gallery } from "./components/Gallery";
 
 import photos from "./fotos.json";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { ModalZoom } from "./components/ModalZoom";
+import { Footer } from "./components/Footer/style";
 
 const BackgroundGradient = styled.div`
   background: linear-gradient(
@@ -41,20 +42,34 @@ const GalleryContent = styled.section`
 const App = () => {
   const [galleryPhotos, setGalleryPhotos] = useState(photos);
   const [photoSelected, setPhotoSelected] = useState(null);
+  const [filter, setFilter] = useState("");
+  const [tag, setTag] = useState(0);
+
+  useEffect(() => {
+    const filteredPhotos = photos.filter((photo) => {
+      const filterTag = !tag || photo.tagId === tag;
+      const filterTitle =
+        !filter || photo.titulo.toLowerCase().includes(filter.toLowerCase());
+      return filterTag && filterTitle;
+    });
+    setGalleryPhotos(filteredPhotos);
+  }, [filter, tag]);
 
   const toggleFavorite = (photo) => {
     if (photo.id === photoSelected?.id) {
       setPhotoSelected({
         ...photoSelected,
-        favorite: !photoSelected.favorite
-      })
+        favorite: !photoSelected.favorite,
+      });
     }
     setGalleryPhotos(
       galleryPhotos.map((galleryPhoto) => {
         return {
           ...galleryPhoto,
           favorite:
-            galleryPhoto.id === photo.id ? !photo.favorite : galleryPhoto.favorite,
+            galleryPhoto.id === photo.id
+              ? !photo.favorite
+              : galleryPhoto.favorite,
         };
       })
     );
@@ -64,7 +79,7 @@ const App = () => {
     <BackgroundGradient>
       <GlobalStyles />
       <AppContainer>
-        <Header />
+        <Header filter={filter} setFilter={setFilter} />
         <MainContainer>
           <Aside />
           <GalleryContent>
@@ -73,18 +88,20 @@ const App = () => {
               text={"A galeria mais completa de fotos do espaço!"}
             />
             <Gallery
+              photos={galleryPhotos}
               onPhotoSelected={(photo) => setPhotoSelected(photo)}
               toggleFavorite={toggleFavorite}
-              photos={galleryPhotos}
+              setTag={setTag}
             />
           </GalleryContent>
         </MainContainer>
       </AppContainer>
-      <ModalZoom 
-      photo={photoSelected} 
-      OnClose={() => setPhotoSelected(null)}
-      toggleFavorite={toggleFavorite}
+      <ModalZoom
+        photo={photoSelected}
+        OnClose={() => setPhotoSelected(null)}
+        toggleFavorite={toggleFavorite}
       />
+      <Footer />
     </BackgroundGradient>
   );
 };

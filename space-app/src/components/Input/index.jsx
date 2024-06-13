@@ -28,11 +28,12 @@ const IconSearch = styled.img`
   height: 38px;
 `;
 
-export const Input = (props) => {
+export const Input = ({ setFilter }) => {
   return (
     <Container>
-      <InputStyled placeholder="O que você procura?" {...props} />
-        <IconSearch src={search} />
+      <InputStyled 
+      onChange={(e) => { setFilter(e.target.value) }} type="text" placeholder="O que você procura?" />
+        <IconSearch src={search} alt="ícone de lupa"/>
     </Container>
   );
 };
